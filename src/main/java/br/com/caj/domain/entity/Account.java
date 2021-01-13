@@ -1,17 +1,19 @@
 package br.com.caj.domain.entity;
 
-import lombok.Data;
-import javax.inject.Named;
+
+import lombok.Getter;
+import lombok.Builder;
+import lombok.AllArgsConstructor;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import lombok.AllArgsConstructor;
 
 /**
  * Account - Entity for manipulate account data.
  */
-@Named
-@Data
+@Getter
+@Builder
 @AllArgsConstructor
 public final class Account implements Serializable {
 
