@@ -25,7 +25,7 @@ public final class AccountUseCase implements Serializable {
    * 
    * @param accountProvider
    */
-  public AccountUseCase(@Named("accountProviderImpl") AccountProvider accountProvider) {
+  public AccountUseCase(@Named("accountDataProvider") AccountProvider accountProvider) {
     this.accountProvider = accountProvider;
   }
 
