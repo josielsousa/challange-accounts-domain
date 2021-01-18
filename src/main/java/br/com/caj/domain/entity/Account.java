@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 /**
  * Account - Entity for manipulate account data.
@@ -24,6 +24,7 @@ public final class Account implements Serializable {
   private String cpf;
   private String secret;
   private BigDecimal balance;
-  private LocalDateTime createdAt;
+  private Instant createdAt;
+  private Instant updatedAt;
 
 }
