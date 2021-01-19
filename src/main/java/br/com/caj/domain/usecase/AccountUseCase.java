@@ -5,6 +5,7 @@ import javax.inject.Named;
 import br.com.caj.domain.dataprovider.AccountProvider;
 import br.com.caj.domain.entity.Account;
 import br.com.caj.domain.usecase.exception.AccountException;
+import br.com.caj.domain.usecase.exception.AccountExistingException;
 import br.com.caj.domain.usecase.exception.AccountNotFoundException;
 
 import java.io.Serializable;
@@ -53,7 +54,7 @@ public final class AccountUseCase implements Serializable {
    * @return
    * @throws AccountNotFoundException
    */
-  public Account getAccount(String uuid) throws AccountNotFoundException {
+  public Account getAccount(final String uuid) throws AccountNotFoundException {
     Account account = null;
 
     if (accountProvider != null && uuid != null && !uuid.isBlank()) {
@@ -65,5 +66,22 @@ public final class AccountUseCase implements Serializable {
     }
 
     return account;
+  }
+
+  /**
+   * Returns an account by CPF.
+   * 
+   * @param cpf
+   * @return
+   * @throws AccountNotFoundException
+   */
+  public Account create(Account account) throws AccountException, AccountExistingException {
+    Account accountExisting = accountProvider.getAccountByCPF(account.getCpf());
+
+    if (accountExisting != null) {
+      throw new AccountExistingException("Account has exists for this CPF.");
+    }
+
+    return accountProvider.create(account);
   }
 }
