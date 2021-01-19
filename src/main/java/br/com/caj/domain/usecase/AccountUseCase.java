@@ -5,6 +5,7 @@ import javax.inject.Named;
 import br.com.caj.domain.dataprovider.AccountProvider;
 import br.com.caj.domain.entity.Account;
 import br.com.caj.domain.usecase.exception.AccountException;
+import br.com.caj.domain.usecase.exception.AccountNotFoundException;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -43,5 +44,26 @@ public final class AccountUseCase implements Serializable {
     }
 
     return accounts;
+  }
+
+  /**
+   * Returns an account by uuid.
+   * 
+   * @param uuid
+   * @return
+   * @throws AccountNotFoundException
+   */
+  public Account getAccount(String uuid) throws AccountNotFoundException {
+    Account account = null;
+
+    if (accountProvider != null && uuid != null && !uuid.isBlank()) {
+      account = accountProvider.getAccount(uuid);
+    }
+
+    if (account == null) {
+      throw new AccountNotFoundException("Account not found");
+    }
+
+    return account;
   }
 }
