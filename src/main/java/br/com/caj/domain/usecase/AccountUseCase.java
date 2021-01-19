@@ -69,7 +69,7 @@ public final class AccountUseCase implements Serializable {
   }
 
   /**
-   * Returns an account by CPF.
+   * Create a new account.
    * 
    * @param cpf
    * @return
@@ -83,5 +83,22 @@ public final class AccountUseCase implements Serializable {
     }
 
     return accountProvider.create(account);
+  }
+
+  /**
+   * Update an existing account.
+   * 
+   * @param cpf
+   * @return
+   * @throws AccountNotFoundException
+   */
+  public Account update(Account account) throws AccountException, AccountNotFoundException{
+    Account accountExisting = accountProvider.getAccount(account.getUuid());
+
+    if (accountExisting == null) {
+      throw new AccountNotFoundException("Account not found");
+    }
+
+    return accountProvider.update(account);
   }
 }
