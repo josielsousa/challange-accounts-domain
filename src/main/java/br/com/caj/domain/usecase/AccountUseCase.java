@@ -62,7 +62,7 @@ public final class AccountUseCase implements Serializable {
     }
 
     if (account == null) {
-      throw new AccountNotFoundException("Account not found");
+      throw new AccountNotFoundException("Account not found here");
     }
 
     return account;
