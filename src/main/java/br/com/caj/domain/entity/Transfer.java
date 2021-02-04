@@ -20,8 +20,8 @@ public final class Transfer implements Serializable {
   private static final long serialVersionUID = -3533365134045634301L;
 
   private String uuid;
-  private String accountOriginUuiD;
-  private String accountDestinationUuiD;
+  private String accountOriginUuid;
+  private String accountDestinationUuid;
   private BigDecimal amount;
   private Instant createdAt;
   private Instant updatedAt;

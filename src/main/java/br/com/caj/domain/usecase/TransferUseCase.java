@@ -58,12 +58,12 @@ public final class TransferUseCase implements Serializable {
    */
   public Transfer create(Transfer transfer)
       throws TransferException, TransferNotFoundException, TransferInsufficientBalanceException {
-    Account origin = accountProvider.getAccount(transfer.getAccountOriginUuiD());
+    Account origin = accountProvider.getAccount(transfer.getAccountOriginUuid());
     if (origin == null) {
       throw new TransferNotFoundException("Origin account not found");
     }
 
-    Account destination = accountProvider.getAccount(transfer.getAccountDestinationUuiD());
+    Account destination = accountProvider.getAccount(transfer.getAccountDestinationUuid());
     if (destination == null) {
       throw new TransferNotFoundException("Destination account not found");
     }
