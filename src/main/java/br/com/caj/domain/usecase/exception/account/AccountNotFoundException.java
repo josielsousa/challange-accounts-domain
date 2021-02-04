@@ -1,4 +1,4 @@
-package br.com.caj.domain.usecase.exception;
+package br.com.caj.domain.usecase.exception.account;
 
 /**
  * AccountNotFoundException - Account exception to notify account not found.

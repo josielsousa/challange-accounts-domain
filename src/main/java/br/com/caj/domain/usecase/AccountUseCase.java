@@ -4,12 +4,11 @@ import javax.inject.Named;
 
 import br.com.caj.domain.dataprovider.AccountProvider;
 import br.com.caj.domain.entity.Account;
-import br.com.caj.domain.usecase.exception.AccountException;
-import br.com.caj.domain.usecase.exception.AccountExistingException;
-import br.com.caj.domain.usecase.exception.AccountNotFoundException;
+import br.com.caj.domain.usecase.exception.account.AccountException;
+import br.com.caj.domain.usecase.exception.account.AccountExistingException;
+import br.com.caj.domain.usecase.exception.account.AccountNotFoundException;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -38,13 +37,7 @@ public final class AccountUseCase implements Serializable {
    * @throws AccountException
    */
   public Set<Account> getAllAccounts() throws AccountException {
-    Set<Account> accounts = new HashSet<Account>();
-
-    if (accountProvider != null) {
-      accounts = accountProvider.getAllAccounts();
-    }
-
-    return accounts;
+    return accountProvider.getAllAccounts();
   }
 
   /**
@@ -62,7 +55,7 @@ public final class AccountUseCase implements Serializable {
     }
 
     if (account == null) {
-      throw new AccountNotFoundException("Account not found here");
+      throw new AccountNotFoundException("Account not found by uuid: " + uuid);
     }
 
     return account;

@@ -2,7 +2,6 @@ package br.com.caj.domain.entity;
 
 
 import lombok.Getter;
-import lombok.Setter;
 import lombok.Builder;
 import lombok.AllArgsConstructor;
 
@@ -14,8 +13,8 @@ import java.time.Instant;
  * Account - Entity for manipulate account data.
  */
 @Getter
-@Builder
 @AllArgsConstructor
+@Builder(toBuilder = true)
 public final class Account implements Serializable {
 
   private static final long serialVersionUID = -1924730905309351346L;

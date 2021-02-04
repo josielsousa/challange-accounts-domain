@@ -1,4 +1,4 @@
-package br.com.caj.domain.usecase.exception;
+package br.com.caj.domain.usecase.exception.account;
 
 /**
  * AccountException - Generic exception to manipulate accounts informations.

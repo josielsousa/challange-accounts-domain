@@ -1,4 +1,4 @@
-package br.com.caj.domain.usecase.exception;
+package br.com.caj.domain.usecase.exception.account;
 
 /**
  * AccountExistingException - Account exception to notify account has exists.
