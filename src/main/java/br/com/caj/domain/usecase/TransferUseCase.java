@@ -44,6 +44,10 @@ public final class TransferUseCase implements Serializable {
    * @throws TransferException
    */
   public Set<Transfer> getAllTransfers(String accountUuid) throws TransferException {
+    if (accountUuid == null || accountUuid.isBlank()) {
+      throw new TransferException("Account uuid not be empty");
+    }
+
     return transferProvider.getAllTransfers(accountUuid);
   }
 

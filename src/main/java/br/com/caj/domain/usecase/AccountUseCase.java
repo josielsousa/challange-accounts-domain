@@ -45,11 +45,15 @@ public final class AccountUseCase implements Serializable {
    * 
    * @param uuid
    * @return
+   * @throws AccountException
    * @throws AccountNotFoundException
    */
-  public Account getAccount(final String uuid) throws AccountNotFoundException {
-    Account account = null;
+  public Account getAccount(final String uuid) throws AccountException, AccountNotFoundException {
+    if (uuid == null || uuid.isBlank()) {
+      throw new AccountException("Account uuid not be empty");
+    }
 
+    Account account = null;
     if (accountProvider != null && uuid != null && !uuid.isBlank()) {
       account = accountProvider.getAccount(uuid);
     }
